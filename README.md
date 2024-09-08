@@ -23,14 +23,9 @@ Sometimes, it's not just the libraries but also the Python version itself that d
 - Project A might run on **Python 3.7**, while Project B needs **Python 3.9**.
 This helps test compatibility and ensure that each project uses the appropriate Python version without interfering with other projects.
 
-## Managing Multiple Virtual Environments
-In a case where a developer is working with multiple Python Virtual Environments while juggling projects, to determine the Python version and installed libraries for each virtual environment, 
-they have to individually navigate to and activate the environments and use`python --version` and `pip list` to check the versions of Python and any installed libraries in that specific folder, or 
-alternatively, individually check the `pyvenv.cfg` file for the Python version and the`site-packages/` directory for installed libraries.
-
 ## Goal, Purpose and Why
 Existing tools such as virtualenvwrapper, creates all virtual environments by default under the directory specified by the WORKON_HOME environment variable (usually ~/.virtualenvs).
-To check the libraries and versions installed in each virtual environment, the developer also needs to either run 'pip list' individually after activated each environment separately, or
+To check the libraries and versions installed in each virtual environment, the developer also needs to either run 'pip list' individually after activated each environment, or
 they have to individually check the site-packages folder.
 
 The main purpose of this project is to streamline and automate this process of managing multiple Python virtual environments.
