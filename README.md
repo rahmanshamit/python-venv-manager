@@ -25,7 +25,7 @@ This helps test compatibility and ensure that each project uses the appropriate 
 
 ## Goal, Purpose and Why
 Existing tools such as virtualenvwrapper, creates all virtual environments by default under the directory specified by the WORKON_HOME environment variable (usually ~/.virtualenvs).
-To check the libraries and versions installed in each virtual environment, the developer also needs to either run 'pip list' individually after activated each environment, or
+To check the libraries and versions installed in each virtual environment, the developer also needs to either run 'pip list' individually, or
 they have to individually check the site-packages folder.
 
 The main purpose of this project is avoid individual manual checking, and to streamline and automate this process of managing multiple Python virtual environments.
