@@ -2,13 +2,8 @@ import os
 import subprocess
 import sys
 
-# Define the base directories where your virtual environments are located
-venv_dirs = [
-    # local drive placeholders for testing during development process
-    # TODO: Take base directories from user
-    'D:/Code/python_venv_checker/venv1/myvenv1', 
-    'D:/Code/python_venv_checker/venv2/myvenv2'
-]
+# Base directories where virtual environments are located
+venv_dirs = []
 
 # Function to check Python version and libraries for a virtual environment
 def check_venv_versions(venv_path):
@@ -51,6 +46,35 @@ def deactivate_venv(venv_path):
 def delete_venv(venv_path):
     return print("delete venv")
 
+def get_drive_paths():
+    paths = []
+    print("Enter local venv paths (press Enter without input when done):")
+    while True:
+        # Ask the user to input a path
+        path = input("Enter path: ")
+        path.replace("\\", "/")
+
+        # Check if the user pressed Enter without input
+        if path == "":
+            break
+        
+        # Optionally, you can validate if the path exists before adding it
+        # Uncomment the following lines if you want to check for valid paths
+        if os.path.exists(path) and path not in paths:
+            paths.append(path)
+        else:
+            print(f"Path does not exist or already added: {path}")
+    return paths
+
+# If running tool for the first time and paths are empty
+# TODO: Implement local storage or memory, so that a user only needs to this once during startup
+if not venv_dirs:
+    # Get venv paths from user
+    venv_dirs = get_drive_paths()
+
+# If no paths were provided
+if not venv_dirs:
+    print("No paths were entered.")
 
 for base_dir in venv_dirs:
     print("BASE DIR IS: {}".format(base_dir))
