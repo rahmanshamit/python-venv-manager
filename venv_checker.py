@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import json
 
 # Base directories where virtual environments are located
 venv_dirs = []
@@ -46,36 +47,50 @@ def deactivate_venv(venv_path):
 def delete_venv(venv_path):
     return print("delete venv")
 
-def get_drive_paths():
+# Saves user input virtual envirnment paths to local json file
+def save_paths_to_json():
     paths = []
-    print("Enter local venv paths (press Enter without input when done):")
+    print("Enter local drive paths. When you're done, type 'y' and press Enter.")
+    
     while True:
-        # Ask the user to input a path
-        path = input("Enter path: ")
-        path.replace("\\", "/")
-
-        # Check if the user pressed Enter without input
-        if path == "":
+        # Ask the user for a path
+        path = input("Enter path (or 'y' to finish): ")
+        
+        if path.lower() == 'y':  # Check if user wants to finish input
             break
         
-        # Optionally, you can validate if the path exists before adding it
-        # Uncomment the following lines if you want to check for valid paths
-        if os.path.exists(path) and path not in paths:
-            paths.append(path)
+        # Optionally, validate if the path exists on the system
+        if path != "":
+            if os.path.exists(path) and path not in paths:
+                paths.append(path)
+            else:
+                print(f"Warning: Path does not exist or already added: {path}")
         else:
-            print(f"Path does not exist or already added: {path}")
-    return paths
+            print(f"Warning: Cannot add empty path")
+        
+    # Save the paths to paths.json
+    with open('paths.json', 'w') as json_file:
+        json.dump(paths, json_file, indent=4)
+    print("Paths saved to 'paths.json'.")
 
-# If running tool for the first time and paths are empty
-# TODO: Implement local storage or memory, so that a user only needs to this once during startup
-if not venv_dirs:
-    # Get venv paths from user
-    venv_dirs = get_drive_paths()
+def get_drive_paths():
+    if os.path.exists('paths.json'):
+        with open('paths.json', 'r') as json_file:
+            paths = json.load(json_file)
+            print("Loaded paths from 'paths.json':")
+            return paths
+
+# STARTS FROM HERE
+# If no paths json file, get paths from Json
+if not os.path.exists('paths.json'):
+    save_paths_to_json()
+
+# Get venv paths from user
+venv_dirs = get_drive_paths()
 
 # If no paths were provided
 if not venv_dirs:
     print("No paths were entered.")
-
-for base_dir in venv_dirs:
-    print("BASE DIR IS: {}".format(base_dir))
-    check_venv_versions(os.path.join(base_dir))
+else:
+    for base_dir in venv_dirs:
+        check_venv_versions(os.path.join(base_dir))
