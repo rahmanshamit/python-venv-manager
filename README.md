@@ -1,6 +1,16 @@
 # python-venv-manager
 A Python tool to manage multiple virtual environments, including options to view Python versions, installed libraries, add or remove virtual environments, and activate them in a new terminal.
 
+## Goal, Purpose and Why
+Existing tools such as virtualenvwrapper, creates all virtual environments by default under the directory specified by the WORKON_HOME environment variable (usually ~/.virtualenvs).
+To check the libraries and versions installed in each virtual environment, the developer also needs to either run 'pip list' individually, or
+they have to individually check the site-packages folder.
+
+The main purpose of this project is avoid individual manual checking, and to streamline and automate this process of managing multiple Python virtual environments.
+
+I want to give the developer the freedom to create their venv folders wherever as they want, and rather than manually nagivate to each venv folder, 
+only define the paths once during setup, and manage environments from the tool.
+
 ## Features
 - **Add Virtual Environments**: Input paths to your virtual environments and save them to a `paths.json` file.
 - **View Python Info**: View the Python version and installed libraries for all or specific virtual environments.
@@ -48,13 +58,3 @@ By using virtual environments, developers can avoid conflicts between different 
 Sometimes, it's not just the libraries but also the Python version itself that differs between projects. Virtual environments allow a developer to create isolated environments with different versions of Python:
 - Project A might run on **Python 3.7**, while Project B needs **Python 3.9**.
 This helps test compatibility and ensure that each project uses the appropriate Python version without interfering with other projects.
-
-## Goal, Purpose and Why
-Existing tools such as virtualenvwrapper, creates all virtual environments by default under the directory specified by the WORKON_HOME environment variable (usually ~/.virtualenvs).
-To check the libraries and versions installed in each virtual environment, the developer also needs to either run 'pip list' individually, or
-they have to individually check the site-packages folder.
-
-The main purpose of this project is avoid individual manual checking, and to streamline and automate this process of managing multiple Python virtual environments.
-
-I want to give the developer the freedom to create their venv folders wherever as they want, and rather than manually nagivate to each venv folder, 
-only define the paths once during setup, and manage environments from the tool.
