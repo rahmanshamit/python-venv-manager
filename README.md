@@ -1,6 +1,4 @@
 # python-venv-manager
-
-## How To:
 A Python tool to manage multiple virtual environments, including options to view Python versions, installed libraries, add or remove virtual environments, and activate them in a new terminal.
 
 ## Features
