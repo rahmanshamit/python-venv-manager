@@ -1,10 +1,38 @@
 # python-venv-manager
 
-## What is a Python Virtual Environment
+## How To:
+A Python tool to manage multiple virtual environments, including options to view Python versions, installed libraries, add or remove virtual environments, and activate them in a new terminal.
+
+## Features
+- **Add Virtual Environments**: Input paths to your virtual environments and save them to a `paths.json` file.
+- **View Python Info**: View the Python version and installed libraries for all or specific virtual environments.
+- **Activate Virtual Environments**: Open a new terminal and activate the selected virtual environment.
+- **Manage Virtual Environments**: Add new paths, delete existing paths, or refresh the list.
+
+## Getting Started
+### 1. Run the Script
+To use the tool, first run the Python script "python venv_manager.py". On the first run, you will be prompted to input the paths to your local virtual environments.
+
+### 2. Input Virtual Environment Paths
+The script will ask you to enter local drive paths for your virtual environments.
+
+### 3. Main Menu Options
+Once the paths are saved in the paths.json file, the tool will present a menu with several options:
+1. Show Python version and installed libraries for all paths
+2. Show Python version and installed libraries for a specific path
+3. Add new path
+4. Delete a path
+5. Activate a virtual environment
+6. Exit
+
+### Requirements:
+- Python 3.x
+- Virtual environments (Paths should be valid)
+
+
+## Python Virtual Environments - What and Why
 A Python virtual environment is a self-contained directory that contains a specific version of Python and its libraries, independent of the system-wide Python installation. 
 It allows you to create an isolated environment where you can install and manage dependencies for each project without affecting other projects or the global Python setup.
-
-## Reasons for Multiple Virtual Environments
 A developer may need to maintain multiple Python virtual environments, each with different versions of libraries for reasons such as:
 
 ### 1. **Project-Specific Dependencies**
